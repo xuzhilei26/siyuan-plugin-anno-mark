@@ -1,0 +1,314 @@
+/* Style templates panel (left sidebar).
+   Visual language follows the ShareX prototype: checkerboard swatches, tight
+   82px cards, a badge on built-ins and a hover-only delete button. */
+
+.am-tpl-panel .am-panel-title {
+    margin-bottom: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Save row
+   -------------------------------------------------------------------------- */
+
+.am-tpl-save {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.am-tpl-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 34px;
+    padding: 0 10px;
+    background: var(--am-ctl);
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius-s);
+    color: var(--am-text);
+    font: inherit;
+    font-size: 12.5px;
+    outline: none;
+}
+
+.am-tpl-name:focus {
+    border-color: var(--am-accent);
+}
+
+.am-tpl-name::placeholder {
+    color: var(--am-text-2);
+}
+
+.am-tpl-save-btn {
+    flex: 0 0 auto;
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--am-accent);
+    border-radius: var(--am-radius-s);
+    background: var(--am-accent-soft);
+    color: var(--am-accent);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.12s var(--am-ease), color 0.12s var(--am-ease);
+}
+
+.am-tpl-save-btn:hover {
+    background: var(--am-accent);
+    color: var(--am-bg);
+}
+
+.am-tpl-save-btn:focus-visible {
+    outline: 2px solid var(--am-accent);
+    outline-offset: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Groups + grid
+   -------------------------------------------------------------------------- */
+
+.am-tpl-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.am-tpl-group-head {
+    padding: 0 2px 6px;
+    color: var(--am-text-2);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.am-tpl-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+/* Flex/grid children ignore the UA `[hidden]` rule in some browsers. */
+.am-tpl-panel .am-tpl-group[hidden],
+.am-tpl-panel .am-tpl-empty[hidden] {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Card
+   -------------------------------------------------------------------------- */
+
+.am-tpl-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    height: 82px;
+    padding: 6px;
+    overflow: hidden;
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius-m);
+    background: var(--am-ctl);
+    color: var(--am-text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.14s var(--am-ease),
+        background 0.14s var(--am-ease), transform 0.12s var(--am-ease);
+}
+
+.am-tpl-card:hover {
+    border-color: var(--am-accent);
+    background: var(--am-ctl-hover);
+}
+
+.am-tpl-card:active {
+    transform: scale(0.985);
+}
+
+.am-tpl-card:focus-visible {
+    outline: 2px solid var(--am-accent);
+    outline-offset: 1px;
+}
+
+/* Checkered swatch keeps transparent fills readable. */
+.am-tpl-swatch {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex: 0 0 38px;
+    width: 100%;
+    height: 38px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: var(--am-chk-a);
+    background-image:
+        linear-gradient(45deg, var(--am-chk-b) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--am-chk-b) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--am-chk-b) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--am-chk-b) 75%);
+    background-size: 10px 10px;
+    background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+}
+
+.am-tpl-box {
+    position: absolute;
+    left: 9px;
+    right: 9px;
+    top: 7px;
+    bottom: 7px;
+    display: block;
+}
+
+.am-tpl-box.is-ellipse {
+    left: 6px;
+    right: 6px;
+    top: 5px;
+    bottom: 5px;
+}
+
+.am-tpl-line {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.am-tpl-aa {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.am-tpl-step {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Card text
+   -------------------------------------------------------------------------- */
+
+.am-tpl-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.am-tpl-name {
+    color: var(--am-text);
+    font-size: 10.5px;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.am-tpl-tool {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--am-text-2);
+    font-size: 9px;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.am-tpl-tool-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    color: var(--am-text-2);
+}
+
+.am-tpl-panel .am-tpl-tool-icon .am-icon {
+    width: 10px;
+    height: 10px;
+}
+
+.am-tpl-tool > span:last-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------------------------------
+   Badge + delete
+   -------------------------------------------------------------------------- */
+
+.am-tpl-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 0 5px;
+    border: 1px solid var(--am-border);
+    border-radius: 999px;
+    background: var(--am-popup);
+    color: var(--am-text-2);
+    font-size: 9px;
+    line-height: 1.5;
+    pointer-events: none;
+}
+
+.am-tpl-panel .am-tpl-del {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: var(--am-popup);
+    color: var(--am-text-2);
+    line-height: 1;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.12s var(--am-ease),
+        background 0.12s var(--am-ease), color 0.12s var(--am-ease);
+}
+
+.am-tpl-card:hover .am-tpl-del,
+.am-tpl-card:focus-within .am-tpl-del,
+.am-tpl-panel .am-tpl-del:focus-visible {
+    opacity: 1;
+}
+
+.am-tpl-panel .am-tpl-del:hover {
+    background: var(--am-danger);
+    color: #fff;
+}
+
+.am-tpl-panel .am-tpl-del .am-icon {
+    width: 11px;
+    height: 11px;
+}
+
+.am-tpl-del:focus-visible {
+    outline: 2px solid var(--am-accent);
+    outline-offset: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Empty state
+   -------------------------------------------------------------------------- */
+
+.am-tpl-empty {
+    padding: 4px 2px 2px;
+    color: var(--am-text-2);
+    font-size: 11.5px;
+}

@@ -1,0 +1,324 @@
+/* Effect parameter editor: shared by the anchored popup (`.am-effect-params`
+   wrapper from the popup layer) and the centered modal (`.am-effect-modal`).
+   Colours come from the `--am-*` theme tokens in index.css. */
+
+.am-ep {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    color: var(--am-text);
+    font: 13px/1.5 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+.am-ep *,
+.am-ep *::before,
+.am-ep *::after {
+    box-sizing: border-box;
+}
+
+.am-effect-params {
+    width: 268px;
+}
+
+.am-effect-params .am-ep {
+    width: 100%;
+}
+
+/* The modal panel is a flex column capped by `max-height`; the root must shrink
+   so that the body (and not the whole dialog) scrolls. */
+.am-ep--modal {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.am-ep-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--am-border);
+}
+
+.am-ep-icon {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    color: var(--am-accent);
+}
+
+.am-ep-icon .am-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.am-ep-titles {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.am-ep-title {
+    color: var(--am-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.am-ep-hint {
+    color: var(--am-text-2);
+    font-size: 10.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.am-ep .am-ep-reset {
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    color: var(--am-text-2);
+}
+
+.am-ep .am-ep-reset:hover {
+    background: var(--am-ctl-hover);
+    color: var(--am-accent);
+}
+
+.am-ep .am-ep-reset .am-icon {
+    width: 15px;
+    height: 15px;
+}
+
+/* --------------------------------------------------------------------------
+   Body / fields
+   -------------------------------------------------------------------------- */
+
+.am-ep-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.am-ep--modal .am-ep-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 2px 4px 2px 0;
+}
+
+.am-ep-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.am-ep .am-field-label {
+    margin: 0;
+    color: var(--am-text);
+    font-size: 12px;
+}
+
+.am-ep .am-range-row {
+    gap: 7px;
+    height: 26px;
+    padding: 0;
+}
+
+.am-ep .am-range-row .am-range {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+}
+
+.am-ep .am-num {
+    flex: 0 0 auto;
+    width: 62px;
+    height: 26px;
+}
+
+.am-ep-color-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.am-ep-color-row .am-native-color {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 26px;
+}
+
+.am-ep-color-row .am-hex {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+}
+
+.am-ep-color-row .am-ep-alpha {
+    width: 52px;
+}
+
+.am-ep .am-switch-row {
+    padding: 2px 0;
+    color: var(--am-text);
+    font-size: 12px;
+}
+
+.am-ep .am-select-wrap {
+    margin: 0;
+}
+
+.am-ep .am-select-wrap select {
+    height: 30px;
+    font-size: 12px;
+}
+
+.am-ep-text {
+    width: 100%;
+    height: 28px;
+    padding: 0 8px;
+    background: var(--am-ctl);
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius-s);
+    color: var(--am-text);
+    font: inherit;
+    font-size: 12px;
+}
+
+.am-ep-text:focus,
+.am-ep .am-hex:focus,
+.am-ep .am-num:focus {
+    outline: none;
+    border-color: var(--am-accent);
+}
+
+.am-ep-file {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.am-ep .am-ep-file-btn {
+    display: block;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    height: 28px;
+    padding: 0 10px;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.am-ep-foot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--am-border);
+}
+
+.am-ep--modal .am-ep-foot {
+    position: sticky;
+    bottom: 0;
+    flex: 0 0 auto;
+    background: var(--am-popup);
+}
+
+.am-ep-btn {
+    height: 30px;
+    padding: 0 14px;
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius-s);
+    background: var(--am-ctl);
+    color: var(--am-text);
+    font: inherit;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.12s var(--am-ease), color 0.12s var(--am-ease),
+        border-color 0.12s var(--am-ease);
+}
+
+.am-ep-btn:hover {
+    background: var(--am-ctl-hover);
+}
+
+.am-ep-btn--primary {
+    background: var(--am-accent);
+    border-color: var(--am-accent);
+    color: var(--am-bg);
+    font-weight: 600;
+}
+
+.am-ep-btn--primary:hover {
+    background: var(--am-accent);
+    filter: brightness(1.06);
+}
+
+.am-ep-btn:focus-visible,
+.am-ep .am-ep-reset:focus-visible {
+    outline: 2px solid var(--am-accent);
+    outline-offset: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Centered modal overlay (only for tall / many-parameter effects)
+   -------------------------------------------------------------------------- */
+
+.am-effect-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.am-effect-modal-panel {
+    display: flex;
+    flex-direction: column;
+    width: min(520px, 100%);
+    max-height: min(82vh, 760px);
+    padding: 14px 16px 12px;
+    background: var(--am-popup);
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius-m);
+    box-shadow: var(--am-shadow);
+    color: var(--am-text);
+    font: 13px/1.5 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+@media (max-width: 600px) {
+    .am-effect-modal {
+        padding: 12px;
+    }
+
+    .am-effect-modal-panel {
+        max-height: 88vh;
+        padding: 12px;
+    }
+}

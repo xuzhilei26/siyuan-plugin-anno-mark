@@ -1,0 +1,20 @@
+/* Toolbar-only styling on top of the shared `.am-btn` control styles. */
+
+.am-file-btn {
+    width: 38px;
+}
+
+.am-tool-btn {
+    position: relative;
+}
+
+.am-tool-btn.is-active::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    right: 9px;
+    bottom: 3px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--am-accent);
+}

@@ -1,0 +1,90 @@
+/* Popup-content-only styling; the popup frame and colours live in `index.css`. */
+
+.am-pop--color {
+    width: 208px;
+}
+
+.am-pop--chips {
+    max-width: 232px;
+}
+
+.am-pop--range .am-range-row {
+    height: auto;
+    padding: 2px 2px 0;
+}
+
+.am-pop--range .am-range-row .am-range {
+    width: auto;
+    flex: 1;
+}
+
+.am-pop--shadow {
+    width: 232px;
+}
+
+.am-pop--shadow .am-switch-row {
+    margin-bottom: 8px;
+}
+
+.am-pop--shadow .am-field {
+    margin-bottom: 10px;
+}
+
+.am-pop--shadow .am-field:last-child {
+    margin-bottom: 0;
+}
+
+.am-pop--shadow .am-field-label {
+    margin: 0 0 4px;
+}
+
+.am-pop--shadow .am-range-row {
+    height: auto;
+    padding: 0;
+}
+
+.am-pop--shadow .am-range-row .am-range {
+    width: auto;
+    flex: 1;
+}
+
+.am-native-color--wide {
+    width: 100%;
+    height: 28px;
+}
+
+.am-pop-hex-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.am-swatch.is-transparent {
+    background-color: var(--am-chk-b);
+    background-image: linear-gradient(
+            45deg,
+            var(--am-chk-a) 25%,
+            transparent 25%,
+            transparent 75%,
+            var(--am-chk-a) 75%
+        ),
+        linear-gradient(
+            45deg,
+            var(--am-chk-a) 25%,
+            var(--am-chk-b) 25%,
+            var(--am-chk-b) 75%,
+            var(--am-chk-a) 75%
+        );
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px;
+}
+
+.am-chip--preview {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.am-chip-label {
+    white-space: nowrap;
+}

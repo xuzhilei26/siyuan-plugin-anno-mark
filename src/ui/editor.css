@@ -1,0 +1,172 @@
+/*
+ * Styles owned by the editor orchestrator: crop overlay, inline text input,
+ * emoji picker grid and the resize dialog form. Everything else reuses the
+ * shared classes from `index.css`.
+ */
+
+/* ---- crop overlay ------------------------------------------------------ */
+.am-crop-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: var(--am-radius-m);
+    pointer-events: none;
+}
+
+.am-crop-box {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    box-shadow:
+        0 0 0 9999px rgba(0, 0, 0, 0.56),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.28);
+    pointer-events: none;
+}
+
+.am-crop-box::before,
+.am-crop-box::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.22);
+    pointer-events: none;
+}
+
+.am-crop-box::before {
+    left: 0;
+    right: 0;
+    top: 33.33%;
+    height: 33.34%;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    background: transparent;
+}
+
+.am-crop-box::after {
+    top: 0;
+    bottom: 0;
+    left: 33.33%;
+    width: 33.34%;
+    border-left: 1px solid rgba(255, 255, 255, 0.22);
+    border-right: 1px solid rgba(255, 255, 255, 0.22);
+    background: transparent;
+}
+
+.am-crop-label {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 11px;
+    line-height: 16px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* ---- inline text editor ------------------------------------------------ */
+.am-editor-text-input {
+    min-height: 24px;
+    white-space: pre-wrap;
+    overflow: hidden;
+    resize: none;
+    line-height: 1.25;
+    transform: translateY(-2px);
+    z-index: 9;
+}
+
+/* ---- emoji picker ------------------------------------------------------ */
+.am-emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 34px);
+    gap: 4px;
+}
+
+.am-emoji {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: var(--am-ctl);
+    color: inherit;
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 0.12s var(--am-ease),
+        border-color 0.12s var(--am-ease);
+}
+
+.am-emoji:hover,
+.am-emoji:focus-visible {
+    background: var(--am-ctl-hover);
+    border-color: var(--am-accent);
+    outline: none;
+}
+
+/* ---- resize dialog ----------------------------------------------------- */
+.am-resize-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+}
+
+.am-resize-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--am-text);
+    font-size: 12.5px;
+}
+
+.am-resize-row .am-num {
+    width: 84px;
+}
+
+.am-resize-apply {
+    margin-top: 2px;
+    justify-content: center;
+}
+
+/* ---- transient helpers ------------------------------------------------- */
+.am-anchor {
+    display: block;
+    pointer-events: none;
+}
+
+.am-field-flash {
+    animation: am-field-flash 1.2s var(--am-ease);
+}
+
+@keyframes am-field-flash {
+    0% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+    25% {
+        box-shadow: 0 0 0 2px var(--am-accent);
+    }
+    100% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+}
+
+.am-editor-file {
+    display: none;
+}
+
+/* ---- canvas panning ---------------------------------------------------- */
+.am-canvas-scroll.is-pan-ready .am-canvas {
+    cursor: grab !important;
+}
+
+.am-canvas-scroll.is-panning,
+.am-canvas-scroll.is-panning .am-canvas {
+    cursor: grabbing !important;
+}
+
+.am-canvas-scroll.is-panning {
+    user-select: none;
+}

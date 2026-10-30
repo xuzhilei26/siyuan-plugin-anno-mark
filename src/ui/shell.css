@@ -1,0 +1,139 @@
+/* Shell-only styles: slots, sidebar scrolling, sidebar sections, the effects
+   overlay and the canvas hint bubble. Layout, colours and controls live in
+   `src/index.css`. */
+
+.am-toolbar-slot,
+.am-options-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+.am-toolbar-slot > *,
+.am-options-slot > * {
+    pointer-events: auto;
+}
+
+.am-sidebar-inner::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.am-sidebar-inner::-webkit-scrollbar-thumb {
+    border: 3px solid var(--am-panel);
+    border-radius: 6px;
+    background: var(--am-ctl-hover);
+}
+
+/* The hint bubble disappears while it has no text. */
+.am-canvas-hint:empty {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Left sidebar sections (background settings / saved style templates)
+   -------------------------------------------------------------------------- */
+
+.am-sidebar-section {
+    display: block;
+}
+
+.am-sidebar-section[hidden] {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Effects overlay (ShareX-style floating panel)
+   -------------------------------------------------------------------------- */
+
+.am-fx-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 46;
+    background: var(--am-mask);
+    backdrop-filter: blur(1px);
+    opacity: 1;
+    transition: opacity 0.16s var(--am-ease);
+}
+
+.am-fx-scrim.is-open {
+    animation: am-fx-scrim-in 0.16s var(--am-ease);
+}
+
+.am-fx-scrim.is-closing {
+    opacity: 0;
+}
+
+.am-fx-host {
+    position: fixed;
+    left: 50%;
+    top: 112px;
+    transform: translateX(-50%);
+    z-index: 48;
+    width: 800px;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 178px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--am-popup);
+    color: var(--am-text);
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius-m);
+    box-shadow: var(--am-shadow);
+    transition: opacity 0.18s var(--am-ease), transform 0.18s var(--am-ease);
+}
+
+.am-fx-host.is-open {
+    animation: am-fx-panel-in 0.18s var(--am-ease);
+}
+
+/* `display: flex` above would otherwise beat the UA `[hidden]` rule. */
+.am-fx-host[hidden] {
+    display: none;
+}
+
+.am-fx-host.is-closing {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px);
+}
+
+/* Inner mount point; hidden until a panel is mounted into it. */
+.am-fx-panel {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.am-fx-panel:empty {
+    display: none;
+}
+
+/* Lock the canvas scroll while the overlay is open. */
+.am-shell.is-fx-open .am-canvas-scroll {
+    overflow: hidden;
+}
+
+@keyframes am-fx-scrim-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes am-fx-panel-in {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}

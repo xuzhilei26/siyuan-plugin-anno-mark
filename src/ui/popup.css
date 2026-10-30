@@ -1,0 +1,7 @@
+/* Popup-only constraints; the frame, colours and transition live in `index.css`. */
+
+.am-popup {
+    max-height: calc(100vh - 16px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}

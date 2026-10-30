@@ -1,0 +1,215 @@
+/* Bottom command bar: layout language from the ShareX prototype, colours from
+   the SiYuan theme tokens declared in `index.css`. */
+
+/* --------------------------------------------------------------------------
+   Zoom trigger
+   -------------------------------------------------------------------------- */
+
+.am-bottom-bar .am-bottom-zoom {
+    width: auto;
+    min-width: 78px;
+    height: 32px;
+    gap: 6px;
+    padding: 0 8px;
+}
+
+.am-bottom-zoom-icon,
+.am-bottom-zoom-chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.am-bottom-zoom-icon .am-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--am-text-2);
+}
+
+.am-bottom-zoom-chevron .am-icon {
+    width: 10px;
+    height: 10px;
+    color: var(--am-text-2);
+}
+
+.am-bottom-zoom-value {
+    min-width: 34px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   Task group: cancel (red) + continue (green circle)
+   -------------------------------------------------------------------------- */
+
+.am-bottom-bar .am-bottom-task {
+    gap: 8px;
+    margin: 0 4px 0 6px;
+}
+
+.am-bottom-bar .am-bottom-cancel {
+    width: 46px;
+    height: 34px;
+    border-radius: 6px;
+    background: var(--am-danger);
+    color: #fff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.am-bottom-bar .am-bottom-cancel:hover {
+    background: var(--am-danger);
+    filter: brightness(1.1);
+}
+
+.am-bottom-bar .am-bottom-cancel:active {
+    background: var(--am-danger);
+    filter: brightness(0.95);
+}
+
+.am-bottom-cancel .am-icon {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.4;
+}
+
+.am-bottom-bar .am-bottom-continue {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #13dd9a;
+    border-radius: 50%;
+    background: var(--am-success);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+}
+
+.am-bottom-bar .am-bottom-continue:hover {
+    background: var(--am-success);
+    filter: brightness(1.08);
+    box-shadow: 0 8px 22px rgba(16, 185, 129, 0.46);
+}
+
+.am-bottom-bar .am-bottom-continue:active {
+    background: var(--am-success);
+    filter: brightness(0.96);
+}
+
+.am-bottom-continue .am-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 3;
+}
+
+/* --------------------------------------------------------------------------
+   Unsaved marker: a small accent dot, never a layout shift.
+   -------------------------------------------------------------------------- */
+
+.am-bottom-save,
+.am-bottom-continue {
+    position: relative;
+}
+
+.am-bottom-save.is-dirty::after,
+.am-bottom-continue.is-dirty::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--am-accent);
+    box-shadow: 0 0 0 2px var(--am-toolbar);
+    pointer-events: none;
+}
+
+.am-bottom-continue.is-dirty::after {
+    top: 1px;
+    right: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Zoom popup
+   -------------------------------------------------------------------------- */
+
+.am-bottom-popup-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+.am-bottom-popup-layer .am-popup {
+    pointer-events: auto;
+}
+
+.am-popup.am-zoom-pop {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.am-menu.am-zoom-menu {
+    min-width: 168px;
+}
+
+.am-zoom-menu .am-menu-item {
+    justify-content: space-between;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Custom percentage row: input + `%` + apply button. */
+.am-zoom-custom {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+}
+
+.am-zoom-custom .am-zoom-input {
+    width: 58px;
+    height: 28px;
+    padding: 0 6px;
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius-s);
+    background: var(--am-ctl);
+    color: var(--am-text);
+    font: inherit;
+    font-size: 12px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Hide the native number spinners; keyboard ↑/↓ still work. */
+.am-zoom-custom .am-zoom-input::-webkit-outer-spin-button,
+.am-zoom-custom .am-zoom-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.am-zoom-custom .am-zoom-percent {
+    font-size: 12px;
+    color: var(--am-text-2);
+}
+
+.am-zoom-custom .am-zoom-apply {
+    width: auto;
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid var(--am-border);
+    border-radius: var(--am-radius-s);
+    background: var(--am-ctl);
+    color: var(--am-text);
+    font-size: 12px;
+}
+
+.am-zoom-custom .am-zoom-apply:hover {
+    background: var(--am-ctl-hover);
+}

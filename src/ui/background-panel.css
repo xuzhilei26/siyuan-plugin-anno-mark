@@ -1,0 +1,31 @@
+/* Background panel: only the bits the shared `.am-*` skins in `index.css`
+   cannot express (hidden native pickers, the active preset ring and spacing of
+   the gradient stop hint). */
+
+.am-bg-panel [hidden] {
+    display: none !important;
+}
+
+.am-hidden-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.am-preset-grid > .is-active {
+    border-color: var(--am-accent);
+    box-shadow: 0 0 0 2px var(--am-accent);
+}
+
+.am-bg-stops {
+    margin: -4px 0 10px;
+}
+
+/* The two halves of the gradient preview double as colour pickers. */
+.am-gradient-preview > .ghalf + .ghalf {
+    border-left: 1px solid var(--am-border);
+}

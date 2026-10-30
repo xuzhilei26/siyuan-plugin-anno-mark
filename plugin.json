@@ -1,0 +1,27 @@
+{
+  "name": "siyuan-plugin-anno-mark",
+  "author": "myuser",
+  "url": "https://github.com/myuser/siyuan-plugin-anno-mark",
+  "version": "1.0.0",
+  "minAppVersion": "3.1.0",
+  "backends": [
+    "all"
+  ],
+  "frontends": [
+    "all"
+  ],
+  "disabledInPublish": true,
+  "displayName": {
+    "default": "AnnoMark",
+    "zh_CN": "AnnoMark 图片标注"
+  },
+  "description": {
+    "default": "Annotate images in SiYuan with rectangles, arrows and text, and keep annotations re-editable.",
+    "zh_CN": "在思源笔记里直接给图片加矩形、箭头、文字标注；保存后仍可再次打开继续编辑。"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README.md"
+  },
+  "keywords": []
+}

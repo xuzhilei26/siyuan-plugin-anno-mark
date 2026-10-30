@@ -1,0 +1,43 @@
+/*
+ * Context menu: reuses the shared `.am-menu` chrome from `index.css` and only
+ * adds fixed positioning, a subtle entrance and a danger colour for
+ * destructive entries.
+ */
+.am-context-menu {
+    position: fixed;
+    z-index: 62;
+    min-width: 218px;
+    max-width: 320px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+        opacity 0.12s var(--am-ease),
+        transform 0.12s var(--am-ease);
+}
+
+.am-context-menu.is-open {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.am-context-menu .am-menu-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.am-menu-item--danger {
+    color: var(--am-danger);
+}
+
+.am-menu-item--danger:hover,
+.am-menu-item--danger:focus-visible {
+    background: color-mix(in srgb, var(--am-danger) 14%, transparent);
+}
+
+.am-menu-item--danger:disabled {
+    color: var(--am-danger);
+    opacity: 0.45;
+}

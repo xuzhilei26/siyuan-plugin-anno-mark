@@ -1,0 +1,238 @@
+/* Effect browser inside the floating `.am-fx-panel` overlay.
+   The root is a flex column: fixed header, search and footer, scrolling body. */
+
+.am-fx-panel .am-effects-panel {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* `display: flex/grid` below would beat the UA `[hidden]` rule; hide explicitly. */
+.am-effects-panel [hidden],
+.am-fx-group[hidden] {
+    display: none;
+}
+
+.am-effects-panel .am-effect-cat.is-collapsed .am-effect-items {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Header (icon + title + subtitle + close)
+   -------------------------------------------------------------------------- */
+
+.am-fx-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--am-border);
+}
+
+.am-fx-head-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    color: var(--am-accent);
+}
+
+.am-fx-head-icon .am-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.am-fx-head-text {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.am-fx-title {
+    color: var(--am-text);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.am-fx-sub {
+    color: var(--am-text-2);
+    font-size: 11px;
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.am-effects-panel .am-fx-close {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    color: var(--am-text-2);
+}
+
+.am-effects-panel .am-fx-close:hover {
+    color: var(--am-text);
+}
+
+.am-effects-panel .am-fx-close .am-icon {
+    width: 15px;
+    height: 15px;
+}
+
+/* --------------------------------------------------------------------------
+   Search
+   -------------------------------------------------------------------------- */
+
+.am-fx-searchbar {
+    flex: 0 0 auto;
+    padding: 10px 14px 6px;
+}
+
+.am-fx-searchbar .am-search {
+    margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Scrollable catalog
+   -------------------------------------------------------------------------- */
+
+.am-fx-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    padding: 4px 14px 12px;
+}
+
+.am-fx-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.am-fx-body::-webkit-scrollbar-thumb {
+    background: var(--am-ctl-hover);
+    border: 3px solid var(--am-popup);
+    border-radius: 6px;
+}
+
+.am-fx-body .am-effect-items {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.am-fx-body .am-effect-cat {
+    margin-bottom: 10px;
+}
+
+.am-effects-panel button.am-effect-cat-head {
+    width: 100%;
+    padding: 6px 4px;
+    border: 0;
+    border-radius: var(--am-radius-s);
+    background: transparent;
+    color: var(--am-text);
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.12s var(--am-ease);
+}
+
+.am-effects-panel button.am-effect-cat-head:hover {
+    background: var(--am-ctl-hover);
+}
+
+.am-effects-panel button.am-effect-cat-head:focus-visible {
+    outline: 2px solid var(--am-accent);
+    outline-offset: 1px;
+}
+
+.am-effect-cat-head--pinned {
+    cursor: default;
+}
+
+.am-effect-cat-name {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.am-effect-cat-chevron {
+    display: inline-flex;
+    flex: 0 0 auto;
+    color: var(--am-text-2);
+}
+
+.am-effect-cat-chevron .am-icon {
+    width: 13px;
+    height: 13px;
+    transition: transform 0.14s var(--am-ease);
+}
+
+.am-effect-cat.is-collapsed .am-effect-cat-chevron .am-icon {
+    transform: rotate(-90deg);
+}
+
+/* Pinned groups (recent / favourites) use the accent colour. */
+.am-effect-cat-ico {
+    display: inline-flex;
+    flex: 0 0 auto;
+    color: var(--am-text-2);
+}
+
+.am-effect-cat-ico .am-icon {
+    width: 13px;
+    height: 13px;
+}
+
+.am-effects-panel .is-pinned .am-effect-cat-ico,
+.am-effects-panel .is-pinned .am-effect-cat-name {
+    color: var(--am-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Items: name + favourite star
+   -------------------------------------------------------------------------- */
+
+.am-effects-panel .am-fx-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.am-fx-star {
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-left: auto;
+    color: var(--am-accent);
+}
+
+.am-fx-star .am-icon {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   Empty state / footer
+   -------------------------------------------------------------------------- */
+
+.am-effects-panel .am-fx-empty {
+    margin: 0;
+    padding: 8px 4px;
+}
+
+.am-fx-foot {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border-top: 1px solid var(--am-border);
+    color: var(--am-text-2);
+    font-size: 11px;
+    line-height: 1.4;
+}

@@ -1,0 +1,11 @@
+/* Toast-only styling; the frame, colours and fade transition live in `index.css`. */
+
+.am-toast-icon .am-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.am-toast-text {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
